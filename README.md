@@ -8,7 +8,7 @@ Please be aware that localhost from Tomcat port: 8080 has been directed to port 
 Application has been deployed on heroku: https://design-your-car-backend.herokuapp.com/
 
 This application hs been created in order to enjoy in design car. User can play with different attributes such as:
-MArk, model, color, image and date of production. It is recommended to mix this elements e.g: user can edit
+Mark, model, color, image and date of production. It is recommended to mix this elements e.g: user can edit
 car with id number 1 and change mark, model, color, image and date for these value which he/she would like to receive.
 In other words they can create Aston Martin G3  with image like Royce Rolls in classic version  with color: Navy blue
 and date of production 1989. And as a result user is able to receive his/her car prototype. 
