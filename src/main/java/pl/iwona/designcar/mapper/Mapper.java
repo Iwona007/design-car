@@ -8,7 +8,7 @@ import pl.iwona.designcar.model.Car;
 
 
 @Component
-public class Utils {
+public class Mapper {
 
     public Object mapperFromDtoToEntity(Object obj) throws IllegalAccessException, InvocationTargetException {
         if (obj instanceof CarDto) {
