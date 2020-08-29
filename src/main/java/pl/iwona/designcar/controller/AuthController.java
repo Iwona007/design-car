@@ -24,8 +24,8 @@ import pl.iwona.designcar.repository.UserRepository;
 import pl.iwona.designcar.security.jwt.JwtUtils;
 import pl.iwona.designcar.security.service.UserDetailsImpl;
 
-
 //@CrossOrigin(origins = "https://design-car-angular.herokuapp.com", maxAge = 3600)
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

@@ -15,6 +15,7 @@ import pl.iwona.designcar.model.Car;
 import pl.iwona.designcar.service.CarService;
 
 //@CrossOrigin(origins = "https://design-car-angular.herokuapp.com", maxAge = 3600)
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/api/cars")
 public class CarControllers {
@@ -65,7 +66,8 @@ public class CarControllers {
 
     @PutMapping("/edit/{id}")  // ok
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<Car> editCar(@PathVariable Long id, @RequestBody CarDto carDto) throws InvocationTargetException, IllegalAccessException {
+    public ResponseEntity<Car> editCar(@PathVariable Long id, @RequestBody CarDto carDto)
+            throws InvocationTargetException, IllegalAccessException {
         Car carTransformFromDto = carService.mappingCarDtoToEntity(carDto);
         carService.editCar(carTransformFromDto.getMark(), carTransformFromDto.getModel(),
                 carTransformFromDto.getImageName(), convertColor.convertToEnum(carTransformFromDto.getColor().name()),
@@ -81,8 +83,8 @@ public class CarControllers {
     }
 
     @DeleteMapping("/delete/{id}")
-//    @PreAuthorize("hasRole('ADMIN')") // ok
-    public ResponseEntity<Car> removeById(@PathVariable Long id) {
+    @PreAuthorize("hasRole('ADMIN')") // ok
+    public ResponseEntity<Car> removeById(@ PathVariable Long id) {
         if (carService.getById(id).isPresent()) {
             carService.removeById(id);
             return ResponseEntity.ok().build();

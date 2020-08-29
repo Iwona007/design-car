@@ -17,7 +17,6 @@ import pl.iwona.designcar.security.jwt.AuthEntryPointJwt;
 import pl.iwona.designcar.security.jwt.JwtTokenFilter;
 import pl.iwona.designcar.security.service.UserDetailsServiceImpl;
 
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
@@ -25,11 +24,15 @@ import pl.iwona.designcar.security.service.UserDetailsServiceImpl;
         // jsr250Enabled = true,
         prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+
     UserDetailsServiceImpl userDetailsService;
 
-    @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
+
+    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, AuthEntryPointJwt unauthorizedHandler ){
+        this.userDetailsService = userDetailsService;
+        this.unauthorizedHandler = unauthorizedHandler;
+    }
 
     @Bean
     public JwtTokenFilter authenticationJwtTokenFilter() {
