@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.validation.constraints.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pl.iwona.designcar.convert_to_enum.ConvertColor;
 import pl.iwona.designcar.dto.CarDto;
@@ -32,7 +33,7 @@ public class CarControllers {
     }
 
     @PostMapping("/add")
-//    @PreAutorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Car> save(@RequestBody CarDto carDto) throws InvocationTargetException,
             IllegalAccessException, URISyntaxException {
         Car carTransformedFromDto = carService.mappingCarDtoToEntity(carDto);
@@ -41,7 +42,7 @@ public class CarControllers {
     }
 
     @GetMapping("/{id}")
-//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<Car> getById(@PathVariable Long id) {
         Optional<Car> carFromDataBase = carService.getById(id);
         return carFromDataBase.map(response -> ResponseEntity.ok().body(response)).
@@ -49,21 +50,21 @@ public class CarControllers {
     }
 
     @GetMapping("/color/{color}")
-//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // ok
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // ok
     public ResponseEntity<List<Car>> findByColor(@PathVariable String color) {
         List<Car> listColorCarsFromDataBase = carService.findCarsByColor(convertColor.convertToEnum(color));
         return new ResponseEntity<>(listColorCarsFromDataBase, HttpStatus.OK);
     }
 
     @GetMapping("/mark/{mark}")
-//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") //ok
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") //ok
     public ResponseEntity<List<Car>> findByMark(@PathVariable String mark) {
         List<Car> listMarkCarsFromDataBase = carService.findByMark(mark);
         return new ResponseEntity<>(listMarkCarsFromDataBase, HttpStatus.OK);
     }
 
     @PutMapping("/edit/{id}")  // ok
-//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ResponseEntity<Car> editCar(@PathVariable Long id, @RequestBody CarDto carDto) throws InvocationTargetException, IllegalAccessException {
         Car carTransformFromDto = carService.mappingCarDtoToEntity(carDto);
         carService.editCar(carTransformFromDto.getMark(), carTransformFromDto.getModel(),
@@ -73,7 +74,7 @@ public class CarControllers {
     }
 
     @PatchMapping("/color/{id}/{color}")
-//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") //ok wyjatek, // ok
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") //ok wyjatek, // ok
     public ResponseEntity<Car> changeColor(@PathVariable @NotNull String color, @PathVariable @NotNull Long id) {
         carService.changeColor(convertColor.convertToEnum(color), id);
         return new ResponseEntity<>(HttpStatus.OK);
