@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import pl.iwona.designcar.model.Role;
 import pl.iwona.designcar.model.RoleName;
 
-
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
 

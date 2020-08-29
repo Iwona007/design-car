@@ -12,8 +12,6 @@ public interface CarService {
 
     Car mappingCarDtoToEntity(CarDto dto) throws InvocationTargetException, IllegalAccessException;
 
-//    Page<Car> findAllCars(Specification<Car> specification, Pageable pageable);
-
     List<Car> getAllCars();
 
     Car save(Car car);

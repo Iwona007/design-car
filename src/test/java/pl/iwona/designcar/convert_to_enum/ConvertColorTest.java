@@ -38,7 +38,6 @@ class ConvertColorTest {
         assertEquals(color, colorEnum.getName());
     }
 
-
     @Test
     @DisplayName("Should throw color not exist exception test")
     void shouldThrowColorNotExistExceptionTest() {

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import pl.iwona.designcar.dto.CarDto;
 import pl.iwona.designcar.model.Car;
 
-
 @Component
 public class Mapper {
 
