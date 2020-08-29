@@ -13,7 +13,7 @@ import pl.iwona.designcar.dto.CarDto;
 import pl.iwona.designcar.model.Car;
 import pl.iwona.designcar.service.CarService;
 
-@CrossOrigin(origins = "https://design-car-angular.herokuapp.com", maxAge = 3600)
+//@CrossOrigin(origins = "https://design-car-angular.herokuapp.com", maxAge = 3600)
 @RestController
 @RequestMapping("/api/cars")
 public class CarControllers {
