@@ -44,9 +44,9 @@ public class Start {
         roles.add(ruser);
 
         User user = new User("Admin", "email1@eamil.com",
-                passwordEncoder.encode("123456"), roles);
+                passwordEncoder.encode("admin456"), roles);
         user.setRoles(roles);
-        User user2 = new User("User", "email2@eamil.com", passwordEncoder.encode("654321"),
+        User user2 = new User("User", "email2@eamil.com", passwordEncoder.encode("admin321"),
                 roles.stream().filter(user1 -> user1.equals(ruser)).collect(Collectors.toSet()));
         user.setRoles(roles);
         userRepository.save(user);
