@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import pl.iwona.cars.models.Car;
-import pl.iwona.cars.models.Color;
+import pl.iwona.designcar.model.Car;
+import pl.iwona.designcar.model.Color;
 
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
