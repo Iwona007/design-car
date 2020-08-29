@@ -3,7 +3,7 @@ package pl.iwona.designcar.repository;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.iwona.cars.models.User;
+import pl.iwona.designcar.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
