@@ -12,21 +12,21 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.iwona.designcar.dto.CarDto;
-import pl.iwona.designcar.mapper.Utils;
+import pl.iwona.designcar.exception.CarNotFoundException;
+import pl.iwona.designcar.mapper.Mapper;
 import pl.iwona.designcar.model.Car;
 import pl.iwona.designcar.model.Color;
 import pl.iwona.designcar.repository.CarRepository;
 
-
 @Service
 public class CarServiceImpl implements CarService {
     private CarRepository carRepository;
-    private Utils utils;
+    private Mapper mapper;
     private List<Car> cars;
 
-    public CarServiceImpl(CarRepository carRepository, Utils utils) {
+    public CarServiceImpl(CarRepository carRepository, Mapper mapper) {
         this.carRepository = carRepository;
-        this.utils = utils;
+        this.mapper = mapper;
         this.cars = new ArrayList<>();
     }
 
@@ -45,13 +45,8 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car mappingCarDtoToEntity(CarDto dto) throws InvocationTargetException, IllegalAccessException {
-        return (Car) utils.mapperFromDtoToEntity(dto);
+        return (Car) mapper.mapperFromDtoToEntity(dto);
     }
-
-//    @Override
-//    public Page<Car> findAllCars(Specification<Car> specification, Pageable pageable){
-//        return carRepository.findAll(specification, pageable);
-//    }
 
     @Transactional(readOnly = true)
     public List<Car> getAllCars() {
@@ -64,10 +59,9 @@ public class CarServiceImpl implements CarService {
 
     @Transactional(readOnly = true)
     public Optional<Car> getById(Long id) {
-        Optional<Car> carFromDataBase = carRepository.findById(id);
-//                .orElseThrow(() -> new CarNotFoundException(id));
-        return carFromDataBase;
-
+        Car carFromDataBase = carRepository.findById(id)
+                .orElseThrow(() -> new CarNotFoundException(id));
+        return Optional.ofNullable(carFromDataBase);
     }
 
     public List<Car> findCarsByColor(Color color) {
@@ -87,9 +81,6 @@ public class CarServiceImpl implements CarService {
     }
 
     public void removeById(Long id) {
-//        Optional<Car> findCar = getById(id);
-//        if (findCar.isPresent()) {
         carRepository.deleteById(id);
-//        }
     }
 }
