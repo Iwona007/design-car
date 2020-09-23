@@ -1,21 +1,19 @@
-"Design car" prototype application.
-This part application is connected with frontend part: https://github.com/Iwona007/design-car-angular
-Please go to above http address to be able to read about used technology in frontend. There also are information 
-how to use this application in Angular. 
+"Design car" prototype application. 
+This part of the application is connected with the frontend: https://github.com/Iwona007/design-car-angular 
+Please go to the above http address to be able to read about what technology was used in the frontend. There 
+is also information on how to use this application in Angular.
 
-Please be aware that localhost from Tomcat port: 8080 has been directed to port number: 8081. 
+Please be aware that localhost from Tomcat port: 8080 has been directed to port number: 8081.
 
-Application has been deployed on heroku: https://design-your-car-backend.herokuapp.com/
-
-This application hs been created in order to enjoy in design car. User can play with different attributes such as:
-Mark, model, color, image and date of production. It is recommended to mix this elements e.g: user can edit
-car with id number 1 and change mark, model, color, image and date for these value which he/she would like to receive.
-In other words they can create Aston Martin G3  with image like Royce Rolls in classic version  with color: Navy blue
-and date of production 1989. And as a result user is able to receive his/her car prototype. 
-
-This part description show only how to use this application in Java and Spring Boot without frontend part. 
-At fest if we go to endpoint /api/cars all user are able to see all cars list even if user is not logged in or 
-registered. 
+Application has been deployed on heroku: https://design-car-angular.herokuapp.com/home
+This application has been created in order to enjoy designing car. Users can play with different attributes 
+such as: mark, model, color, image and date of production. It is recommended to mix these elements e.g: users 
+can edit the car with id number 1 and change mark, model, color, image and date for these values which he/she 
+would like to receive. In other words, they can create an Aston Martin G3 with the appearance of a classic, 
+navy-blue Rolls Royce and date of production 1989. And as a result users are able to receive his/her car prototype.
+This part of description shows only how to use this application in Java and Spring Boot without the frontend. 
+At first, if we go to endpoint /api/cars all users are able to see the entire car list even if the user is not 
+logged in or registered.
 
 Secondly this application has two user already in database: an "Admin" and a "User" with different permission.
 For instance user with user role has smaller privilege than admin role however these permissions are the same as admin's.
