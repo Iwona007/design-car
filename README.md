@@ -5,7 +5,7 @@ is also information on how to use this application in Angular.
 
 Please be aware that localhost from Tomcat port: 8080 has been directed to port number: 8081.
 
-Application has been deployed on heroku: https://design-car-angular.herokuapp.com/home
+<!-- Application has been deployed on heroku: https://design-car-angular.herokuapp.com/home -->
 This application has been created in order to enjoy designing car. Users can play with different attributes 
 such as: mark, model, color, image and date of production. It is recommended to mix these elements e.g: users 
 can edit the car with id number 1 and change mark, model, color, image and date for these values which he/she 
